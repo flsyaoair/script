@@ -1,11 +1,9 @@
-name    'root-module-jdk'
+name 'fls-module-jdk'
 version ''
-source ''
+
 author 'root'
 license ''
+project_page ''
+source ''
 summary ''
 description ''
-project_page ''
-
-## Add dependencies, if any:
-# dependency 'username/name', '>= 1.2.0'
