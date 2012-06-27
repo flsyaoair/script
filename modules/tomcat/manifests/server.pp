@@ -2,13 +2,13 @@ class tomcat::server {
 #	$catalinahome ="/usr/$tomcat::install::tomcatpackage"
 	
 	service {
-		"tomcat6":
+		"$tomcat::params::tomcat":
 		ensure => true,
 		hasstatus => true,
 #		hasrestart => true,
 		enable => true,
 #               restart =>"/etc/init.d/tomcat6",
-             subscribe => File["/var/lib/tomcat6/conf/server.xml"],
+             subscribe => File["$tomcat::params::dlconf/server.xml"],
 #            refreshonly => true,
 #		require => Class["tomcat::install"]
 		
@@ -17,7 +17,7 @@ class tomcat::server {
 	
     exec {
     	"stopped":
-    	command => "service tomcat6 stop",
+    	command => "service $tomcat::params::tomcat stop",
    	path =>"/usr/bin:/usr/sbin:/bin:/usr/share",
     }
 #    exec {

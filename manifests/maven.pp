@@ -1,13 +1,8 @@
-# defined in the production class
-exec { "make":
-    cwd => "/prod/build/dir",
-    path => "/usr/bin:/usr/sbin:/bin"
-}
-
-. etc. .
-
-# defined in the test class
-exec { "make":
-    cwd => "/test/build/dir",
-    path => "/usr/bin:/usr/sbin:/bin"
-}
+file { "/etc/puppet/puppet.conf":
+     ensure => "present",
+     recurse =>true,
+     owner => "root",
+     group => "root",
+     mode => 0777,
+     source => "puppet://master.example.com/config/puppet/puppet.conf",
+    }

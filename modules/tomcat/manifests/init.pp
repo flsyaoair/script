@@ -13,7 +13,7 @@
 # [Remember: No empty lines between comments and class definition]
 
 class tomcat {
-	include tomcat::params,tomcat::server,tomcat::war
+	include tomcat::params,tomcat::install,tomcat::server,tomcat::war
 
 	
 

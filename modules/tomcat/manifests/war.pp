@@ -1,22 +1,25 @@
 class tomcat::war 
          {
-	$dlpath ="/usr/apache-tomcat-5.5.35/webapps"
-	$dlwar ="/usr/repositorise/pp.war"
+         	
+#	$dlconf = "/var/lib/tomcat6/conf"
 	exec {
 		"war":
-		command => "cp $dlwar /var/lib/tomcat6/webapps",
-                path =>"/usr/bin:/usr/sbin:/bin:/usr/share",
+		command => "rm -rf $tomcat::params::dlpath/pp \
+                    && cp $tomcat::params::dlwar $tomcat::params::dlpath \
+                    && sleep 10",
+        path =>"/usr/bin:/usr/sbin:/bin:/usr/share",
 #		require => Class["tomcat::server"],
 #		subscribe => File["$tomcat::install::tomcatfile"],
-                require => Exec["stopped"],
+#        require => Exec["stopped"],
 #		notify =>Service["$tomcat::server::tomcat"],
 	}
   file {
-		"/var/lib/tomcat6/conf/server.xml":
-                ensure => present,
-                recurse => true,
-               source => "puppet:///var/lib/tomcat6/conf/server.xml",
+		"$tomcat::params::dlconf/server.xml":
+         ensure => present,
+        recurse => true,
+        source => "puppet://$tomcat::params::dlconf/server.xml",
 #		content =>template("tomcat/server.xml.erb"),
-		require => Exec["stopped"],
+#		require => Exec["stopped"],
 	}
+	
 }

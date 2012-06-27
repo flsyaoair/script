@@ -1,10 +1,5 @@
-node default {
-
-	include tomcat
-tomcat::vhost {"master.example.com":
-            
-            urlvalue =>'http://192.168.203.178:8389/solr"',
- }
+node default{
+	include centosSystembase
 }
 node 'machinemaster'{
 	include systembase
