@@ -24,20 +24,6 @@ class java::install($jdkpackage){
 #		"$path/java":
 #		source => "$path/java",
 #	}
-
-case $operatingsystem {
-  	Ubuntu :{
-  		$jdkversion="$ujdkversion"
-  	}
-  	/(CentOS|Red Had)/:{
-  		$jdkversion = "$cjdkversion"
-  		
-  	}
-  	default:{
-  		$jdkversion="$ujdkversion"
-  		
-  	}
-	}
   
   }
     
