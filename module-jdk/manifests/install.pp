@@ -1,10 +1,16 @@
-class java::install{
+class java::install($jdkpackage){
+#	default => $jdkpackage
 	$jdkpackage="$java::params::jdksersion"
 #	$server="$HOSTNAME"
 #	$path="puppet://$server/file"
 	package {
 		"$jdkpackage":
-		ensure =>install,
+#        name => $operatingsystem ? {
+#        /(Red Had|CentOS|Ubuntu)/ =>"$jdkpackage",
+#		Solaris =>"$jdkpackage",
+#		},
+		ensure =>installed,
+		
 #		source =>puppet://$fqdn/file
 	}
 #	exec {
@@ -18,4 +24,6 @@ class java::install{
 #		"$path/java":
 #		source => "$path/java",
 #	}
-}
+  
+  }
+    
