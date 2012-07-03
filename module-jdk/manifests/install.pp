@@ -4,21 +4,33 @@ class java::install($jdkpackage){
 	$cjdkpa="$java::params::cjdkv"
 
 #	default => $jdkpackage
-	
-#	$server="$HOSTNAME"
-#	$path="puppet://$server/file"
+	case $operatingsystem {
+  	Ubuntu :{
+  		$java ="$ujdkpa"
+  	}
+  	/(CentOS|Red Had)/:{
+  		$java = "$cjdkpa"
+  		
+  	}
+  	default:{
+  		$java="$ujdkpa"
+  		
+  	}
+  }
+
 	package {
-		"java":
+		"$java":
 #        name => $operatingsystem ? {
 #        /(Red Had|CentOS|Ubuntu)/ =>"$jdkpackage",
 #		Solaris =>"$jdkpackage",
 #		},
-		ensure =>installed,
-		name =>$jdkpa,
+		ensure =>installed,}
+#		name =>"$jdkpa",
 
 		
 #		source =>puppet://$fqdn/file
-	}
+	
+	
 #	exec {
 #		"$jdkpackage":
 #		 command =>"$jdkpackage",
@@ -31,20 +43,8 @@ class java::install($jdkpackage){
 #		source => "$path/java",
 #	}
   
-  	case $operatingsystem {
-  	Ubuntu :{
-  		$jdkpa="$ujdkpa"
-  	}
-  	/(CentOS|Red Had)/:{
-  		$jdkpa = "$cjdkpa"
-  		
-  	}
-  	default:{
-  		$jdkpa="$ujdkpa"
-  		
-  	}
-  }
+ } 	
   
-  }
+
   
     
