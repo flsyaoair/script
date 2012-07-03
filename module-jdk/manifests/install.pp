@@ -1,4 +1,4 @@
-class java::install($jdkpackage){
+class java::install{
 	
 	$ujdkpa="$java::params::ujdkv"
 	$cjdkpa="$java::params::cjdkv"
