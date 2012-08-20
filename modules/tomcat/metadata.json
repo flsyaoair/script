@@ -1,0 +1,24 @@
+{
+  "name": "root-pj-tomcat",
+  "author": "root",
+  "description": "",
+  "license": "",
+  "project_page": "",
+  "source": "",
+  "summary": "",
+  "version": "",
+  "checksums": {
+    "Modulefile": "7df21aeb5139af7b1fd4693e1ddd5426",
+    "README": "6ec73b552dddecb3b1133420433c92fc",
+    "file/apache-tomcat-5.5.35.tar.gz": "1791951e1f2e03be9911e28c6145e177",
+    "manifests/init.pp": "c5484ff4101068aa9d11a71337bf527f",
+    "manifests/install.pp": "741a43a4e2f4a58a0ca4774ef64a69b7",
+    "manifests/params.pp": "88f8ced3a4ee482b003d36593830a40e",
+    "manifests/server.pp": "d41d8cd98f00b204e9800998ecf8427e",
+    "manifests/war.pp": "d41d8cd98f00b204e9800998ecf8427e",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "spec/spec_helper.rb": "ca19ec4f451ebc7fdb035b52eae6e909",
+    "tests/init.pp": "551af72a1a5aca74ceae76cb7a238044"
+  },
+  "dependencies": []
+}
