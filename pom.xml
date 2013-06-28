@@ -1,0 +1,122 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+    <repositories>  
+      <repository>  
+        <id>local-nexus</id>  
+        <url>http://192.168.203.14:8081/nexus/content/repositories/snapshots</url>  
+        <releases>  
+          <enabled>true</enabled>  
+        </releases>  
+        <snapshots>  
+          <enabled>true</enabled>  
+        </snapshots>  
+      </repository>  
+    </repositories>  
+  <groupId>com.csst</groupId>
+  <artifactId>release</artifactId>
+  <version>lasted</version>
+  <packaging>rar</packaging>
+  <name>release</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+<!--
+######################
+上传服务文件 
+######################
+-->
+<profiles>
+<!--
+拷贝操作
+-->
+
+  <profile>
+    <id>test-1.0.2.rar</id>
+    <build>
+      <defaultGoal>deploy:deploy-file</defaultGoal>
+      <plugins>
+        <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.7</version>
+		<configuration>
+              <url>http://192.168.203.14:8081/nexus/content/repositories/releases</url>
+			  <file>..\package\test-1.0.2.rar</file> 
+			  <repositoryId>nexus-snapshots</repositoryId>
+			  <groupId>test</groupId>
+               <artifactId>test</artifactId>
+               <version>1.0.2</version>
+               <type>rar</type>
+          </configuration>		  
+        </plugin>  
+      </plugins>
+    </build>
+  </profile>
+
+<!--
+拷贝操作 
+-->
+  <profile>
+    <id>test-1.4.4.zip</id>
+    <build>
+      <defaultGoal>deploy:deploy-file</defaultGoal>
+      <plugins>
+        <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.7</version>
+		<configuration>
+              <url>http://192.168.203.14:8081/nexus/content/repositories/releases</url>
+			  <file>..\package\test-1.4.4.zip</file> 
+			  <repositoryId>nexus-snapshots</repositoryId>
+			  <groupId>test</groupId>
+               <artifactId>test</artifactId>
+               <version>1.4.4</version>
+               <type>zip</type>
+          </configuration>		  
+        </plugin>  
+      </plugins>
+    </build>
+  </profile>  
+</profiles> 
+ 
+<!--
+######################
+下载服务文件 
+######################
+-->
+<build> 
+<plugins> 
+<plugin> 
+         <artifactId>maven-dependency-plugin</artifactId> 
+           <configuration> 
+                <outputDirectory>../package</outputDirectory> 
+                <excludeTransitive>false</excludeTransitive> 
+                <stripVersion>false</stripVersion> 
+            </configuration> 
+        </plugin>
+</plugins>
+</build>
+<dependencies>
+<!--
+拷贝操作 
+-->
+<dependency>
+  <groupId>test</groupId>
+  <artifactId>test</artifactId>
+  <version>1.4.4</version>
+  <type>zip</type>
+</dependency>
+<!--
+拷贝操作 
+-->
+<dependency>
+  <groupId>test</groupId>
+  <artifactId>test</artifactId>
+  <version>1.0.2</version>
+  <type>rar</type>
+</dependency>
+</dependencies>
+</project>
