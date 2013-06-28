@@ -1,14 +1,14 @@
 import os
 from xml.dom import minidom 
 from xml.dom.minidom import parse
-xmlDoc = parse('pom.xml')
-
-#print xmlDoc.toxml()
-#print xmlDoc.childNodes
-BIT_element = xmlDoc.firstChild
-#print BIT_element.toxml()
-#print BIT_element.childNodes
-list=BIT_element.childNodes
+#xmlDoc = parse('pom.xml')
+#
+##print xmlDoc.toxml()
+##print xmlDoc.childNodes
+#BIT_element = xmlDoc.firstChild
+##print BIT_element.toxml()
+##print BIT_element.childNodes
+#list=BIT_element.childNodes
 #print list[5]
 #versionFile.write(JOB_NAME+'\n'+JOB_NAME)
 #template = versionFile.replace('<id>', 'start')
