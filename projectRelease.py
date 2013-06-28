@@ -14,7 +14,7 @@ from xml.dom.minidom import parse
 #template = versionFile.replace('<id>', 'start')
 #template = versionFile.replace('<id>', 'end')
 #versionFile.write("JOB_NAME"+'\n'+"JOB_NAME")
-#os.system ('mvn dependency:copy-dependencies')
+os.system ('mvn dependency:copy-dependencies')
 
 versionFile=open('version.txt','r')
 content=versionFile.readlines() 
@@ -22,7 +22,7 @@ versionFile.close()
 print content
 for line in content:
      lineContent=line.strip('\n')
-#     os.system ('mvn -P %s' %(lineContent))
+     os.system ('mvn -P %s' %(lineContent))
      print  "%s is there %s" %(line,'area !')
 
 
