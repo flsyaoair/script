@@ -22,16 +22,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
-<!--
-######################
-上传服务文件 
-######################
--->
-<profiles>
-<!--
-拷贝操作
--->
 
+<profiles>
   <profile>
     <id>test-1.0.2.rar</id>
     <build>
@@ -54,39 +46,9 @@
       </plugins>
     </build>
   </profile>
-
-<!--
-拷贝操作 
--->
-  <profile>
-    <id>test-1.4.4.zip</id>
-    <build>
-      <defaultGoal>deploy:deploy-file</defaultGoal>
-      <plugins>
-        <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-deploy-plugin</artifactId>
-        <version>2.7</version>
-		<configuration>
-              <url>http://192.168.203.14:8081/nexus/content/repositories/releases</url>
-			  <file>..\package\test-1.4.4.zip</file> 
-			  <repositoryId>nexus-snapshots</repositoryId>
-			  <groupId>test</groupId>
-               <artifactId>test</artifactId>
-               <version>1.4.4</version>
-               <type>zip</type>
-          </configuration>		  
-        </plugin>  
-      </plugins>
-    </build>
-  </profile>  
 </profiles> 
  
-<!--
-######################
-下载服务文件 
-######################
--->
+
 <build> 
 <plugins> 
 <plugin> 
@@ -100,23 +62,11 @@
 </plugins>
 </build>
 <dependencies>
-<!--
-拷贝操作 
--->
 <dependency>
   <groupId>test</groupId>
   <artifactId>test</artifactId>
   <version>1.4.4</version>
   <type>zip</type>
-</dependency>
-<!--
-拷贝操作 
--->
-<dependency>
-  <groupId>test</groupId>
-  <artifactId>test</artifactId>
-  <version>1.0.2</version>
-  <type>rar</type>
 </dependency>
 </dependencies>
 </project>
