@@ -43,13 +43,11 @@ dependency="""
 """
 releaseFile=open('releases.txt','r')
 releaseContent=releaseFile.readlines()
-print releaseContent
 releaseFile.close()
+
 groupId=releaseContent[0].strip('\n')
-#for line in content:
-#    line=line.strip('\n').
 pName=groupId.rsplit('.')
-if pName[0]=='nvmp':
+if pName[0]=='nvmp' or pName[0]=='ptsp':
     for line in releaseContent[1:]:
         line=line.strip('\n')
         i='-ver'
@@ -136,12 +134,12 @@ if pName[0]=='nvmp':
         content=content.replace('%version%',version)
         content=content.replace('%extension%',extension)
         versionFile=open('pom.xml','w')
-        versionFile.write(content)
-        
+        versionFile.write(content)       
         dependencyContent=content[content.index(y):content.index(x)]
         dependency=dependency[:(dependency.index(x))]+dependencyContent+dependency[(dependency.index(x)):]
-        
         versionFile.close()
+#        os.system ('mvn dependency:copy-dependencies')
+#        os.system ('mvn -P %s' %(line))
         continue
     upPomFile=open('autoUpReleases\pom.xml','w')
     upPomFile.write(dependency)
