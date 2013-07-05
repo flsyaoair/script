@@ -146,7 +146,7 @@ if pName[0]=='nvmp':
     upPomFile=open('autoUpReleases\pom.xml','w')
     upPomFile.write(dependency)
     upPomFile.close()
-    os.system("git commit -am'%s'" %(content))
+    os.system("git commit -am'%s'" %(groupId))
     
 #    os.system(command)
      
