@@ -43,6 +43,7 @@ dependency="""
 """
 releaseFile=open('releases.txt','r')
 releaseContent=releaseFile.readlines()
+print releaseContent
 releaseFile.close()
 groupId=releaseContent[0].strip('\n')
 #for line in content:
