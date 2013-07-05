@@ -26,7 +26,7 @@
 
 <profiles>
   <profile>
-    <id>0858huabeiYT-ver3.0.1.2.rar</id>
+    <id>-.</id>
     <build>
       <defaultGoal>deploy:deploy-file</defaultGoal>
       <plugins>
@@ -36,12 +36,12 @@
         <version>2.7</version>
         <configuration>
               <url>http://192.168.203.14:8081/nexus/content/repositories/releases</url>
-              <file>..\package\0858huabeiYT-ver3.0.1.2.rar</file> 
+              <file>..\package\-.</file> 
               <repositoryId>nexus-snapshots</repositoryId>
-              <groupId>nvmp.0858huabeiYT</groupId>
-              <artifactId>0858huabeiYT</artifactId>
-              <version>ver3.0.1.2</version>
-              <type>rar</type>
+              <groupId></groupId>
+              <artifactId></artifactId>
+              <version></version>
+              <type></type>
           </configuration>          
         </plugin>  
       </plugins>
@@ -64,10 +64,15 @@
 </build>
 <dependencies>
 <dependency>
-  <groupId>nvmp.0858huabeiYT</groupId>
-  <artifactId>0858huabeiYT</artifactId>
-  <version>ver3.0.1.2</version>
-  <type>rar</type>
+  <groupId></groupId>
+  <artifactId></artifactId>
+  <version></version>
+  <type></type>
 </dependency>
 </dependencies>
 </project>
+
+
+
+
+

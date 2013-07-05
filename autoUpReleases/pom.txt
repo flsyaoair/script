@@ -22,34 +22,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  
-
-<profiles>
-  <profile>
-    <id>0858huabeiYT-ver3.0.1.2.rar</id>
-    <build>
-      <defaultGoal>deploy:deploy-file</defaultGoal>
-      <plugins>
-        <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-deploy-plugin</artifactId>
-        <version>2.7</version>
-        <configuration>
-              <url>http://192.168.203.14:8081/nexus/content/repositories/releases</url>
-              <file>..\package\0858huabeiYT-ver3.0.1.2.rar</file> 
-              <repositoryId>nexus-snapshots</repositoryId>
-              <groupId>nvmp.0858huabeiYT</groupId>
-              <artifactId>0858huabeiYT</artifactId>
-              <version>ver3.0.1.2</version>
-              <type>rar</type>
-          </configuration>          
-        </plugin>  
-      </plugins>
-    </build>
-  </profile>
-</profiles> 
- 
-
 <build> 
 <plugins> 
 <plugin> 
@@ -63,6 +35,12 @@
 </plugins>
 </build>
 <dependencies>
+<dependency>
+  <groupId>nvmp.0858huabeiYT</groupId>
+  <artifactId>0858huabeiYT-skyembedproxyserver</artifactId>
+  <version>ver3.0.1.2</version>
+  <type>rar</type>
+</dependency>
 <dependency>
   <groupId>nvmp.0858huabeiYT</groupId>
   <artifactId>0858huabeiYT</artifactId>

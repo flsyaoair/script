@@ -1,18 +1,60 @@
 import os
+y='<dependency>'
+x='</dependencies>'
+dependency="""
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+    <repositories>  
+      <repository>  
+        <id>local-nexus</id>  
+        <url>http://192.168.203.14:8081/nexus/content/repositories/snapshots</url>  
+        <releases>  
+          <enabled>true</enabled>  
+        </releases>  
+        <snapshots>  
+          <enabled>true</enabled>  
+        </snapshots>  
+      </repository>  
+    </repositories>  
+  <groupId>com.csst</groupId>
+  <artifactId>release</artifactId>
+  <version>lasted</version>
+  <packaging>rar</packaging>
+  <name>release</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+<build> 
+<plugins> 
+<plugin> 
+         <artifactId>maven-dependency-plugin</artifactId> 
+           <configuration> 
+                <outputDirectory>../package</outputDirectory> 
+                <excludeTransitive>false</excludeTransitive> 
+                <stripVersion>false</stripVersion> 
+            </configuration> 
+        </plugin>
+</plugins>
+</build>
+<dependencies>
+</dependencies>
+</project>
+"""
 releaseFile=open('releases.txt','r')
-content=releaseFile.readlines()
+releaseContent=releaseFile.readlines()
 releaseFile.close()
-groupId=content[0].strip('\n')
+groupId=releaseContent[0].strip('\n')
 #for line in content:
 #    line=line.strip('\n').
 pName=groupId.rsplit('.')
 if pName[0]=='nvmp':
-    for line in content[1:]:
-        
+    for line in releaseContent[1:]:
+        line=line.strip('\n')
         i='-ver'
         version=line[(line.index(i)+1):-5]
         artifactId=line[:line.index(i)]
-        extension=line[-4:]
+        extension=line[-3:]
         content="""
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -94,8 +136,25 @@ if pName[0]=='nvmp':
         content=content.replace('%extension%',extension)
         versionFile=open('pom.xml','w')
         versionFile.write(content)
+        
+        dependencyContent=content[content.index(y):content.index(x)]
+        dependency=dependency[:(dependency.index(x))]+dependencyContent+dependency[(dependency.index(x)):]
+        
         versionFile.close()
-
+        continue
+    upPomFile=open('autoUpReleases\pom.xml','w')
+    upPomFile.write(dependency)
+    upPomFile.close()
+    os.system('git add .')
+    os.system("git commit -am'%s'" %(line))
+    
+#    os.system(command)
+     
+#        print dependency
+        
+#        os.system ('mvn dependency:copy-dependencies')
+#        os.system ('mvn -P %s' %(line))
+        
      
   
 else:
