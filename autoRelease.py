@@ -47,7 +47,7 @@ releaseFile.close()
 
 groupId=releaseContent[0].strip('\n')
 pName=groupId.rsplit('.')
-if pName[0]=='nvmp' or pName[0]=='ptsp':
+if pName[0]=='nvmp' or pName[0]=='PTSP'or pName[0]=='PTSP-64' or pName[0]=='skyFS'or pName[0]=='ptsp'or pName[0]=='ptsp':
     for line in releaseContent[1:]:
         line=line.strip('\n')
         i='-ver'

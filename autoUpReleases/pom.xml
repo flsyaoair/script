@@ -36,13 +36,13 @@
 </build>
 <dependencies>
 <dependency>
-  <groupId>ptsp.0858huabeiYT</groupId>
+  <groupId>skyFS.0858huabeiYT</groupId>
   <artifactId>0858huabeiYT-skyembedproxyserver</artifactId>
   <version>ver3.0.1.2</version>
   <type>rar</type>
 </dependency>
 <dependency>
-  <groupId>ptsp.0858huabeiYT</groupId>
+  <groupId>skyFS.0858huabeiYT</groupId>
   <artifactId>0858huabeiYT</artifactId>
   <version>ver3.0.1.2</version>
   <type>rar</type>
