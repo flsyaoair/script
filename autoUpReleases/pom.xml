@@ -35,17 +35,5 @@
 </plugins>
 </build>
 <dependencies>
-<dependency>
-  <groupId>skyFS-64</groupId>
-  <artifactId>0858huabeiYT-skyembedproxyserver</artifactId>
-  <version>ver3.0.1.2</version>
-  <type>rar</type>
-</dependency>
-<dependency>
-  <groupId>skyFS-64</groupId>
-  <artifactId>0858huabeiYT</artifactId>
-  <version>ver3.0.1.2</version>
-  <type>rar</type>
-</dependency>
 </dependencies>
 </project>

@@ -24,9 +24,7 @@
   </properties>
   
 
-<profiles>
-  <profile>
-    <id>0858huabeiYT-ver3.0.1.2.rar</id>
+
     <build>
       <defaultGoal>deploy:deploy-file</defaultGoal>
       <plugins>
@@ -46,8 +44,6 @@
         </plugin>  
       </plugins>
     </build>
-  </profile>
-</profiles> 
  
 
 <build> 
