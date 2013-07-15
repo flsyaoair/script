@@ -1,4 +1,5 @@
 import os
+#GIT_COMMIT=os.environ['GIT_COMMIT']
 y='<dependency>'
 x='</dependencies>'
 dependency="""
@@ -48,11 +49,11 @@ releaseFile.close()
 groupId=releaseContent[0].strip('\n')
 pName=groupId.rsplit('.')
 #print groupId
-if pName[0]=='nvmp' or pName[0]=='PTSP'or pName[0]=='PTSP-64' or pName[0]=='skyFS'or pName[0]=='skyFS-64'or pName[0]=='PolicePlatform' or pName[0]=='GuoBiao':
+if pName[0]=='NVMP' or pName[0]=='PTSP'or pName[0]=='PTSP-64' or pName[0]=='skyFS'or pName[0]=='skyFS-64'or pName[0]=='PolicePlatform' or pName[0]=='GuoBiao':
     for line in releaseContent[1:]:
         line=line.strip('\n')
         i='-ver'
-        version=line[(line.index(i)+1):-5]
+        version=line[(line.index(i)+1):-4]
         artifactId=line[:line.index(i)]
         extension=line[-3:]
         content="""
@@ -145,8 +146,12 @@ if pName[0]=='nvmp' or pName[0]=='PTSP'or pName[0]=='PTSP-64' or pName[0]=='skyF
     upPomFile=open('autoUpReleases\pom.xml','w')
     upPomFile.write(dependency)
     upPomFile.close()
-    os.system('git commit -am "%s"' %(releaseContent))
-    
+    gitlog=os.system('git commit -am "%s"' %(releaseContent))
+    print gitlog
+#    os.system('git pull origin downRelease')
+#    os.system('git checkout --ours autoRelease/pom.xml')
+#    os.system('git commit -am "merge"' )
+#    os.system('git push origin %s:downRelease' %('HEAD@{0}')) 
 #    os.system(command)
      
 #        print dependency

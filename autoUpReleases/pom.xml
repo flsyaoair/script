@@ -35,5 +35,11 @@
 </plugins>
 </build>
 <dependencies>
+<dependency>
+  <groupId>NVMP</groupId>
+  <artifactId>up-fdsfsdfsdtest</artifactId>
+  <version>ver1.0.25678888</version>
+  <type>rar</type>
+</dependency>
 </dependencies>
 </project>
