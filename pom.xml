@@ -5,7 +5,7 @@
     <repositories>  
       <repository>  
         <id>local-nexus</id>  
-        <url>http://192.168.203.14:8081/nexus/content/repositories/snapshots</url>  
+        <url>http://192.168.203.14:8081/nexus/content/repositories/releases</url>  
         <releases>  
           <enabled>true</enabled>  
         </releases>  
@@ -38,7 +38,7 @@
               <url>http://192.168.203.14:8081/nexus/content/repositories/releases</url>
               <file>..\package\up-fdsfsdfsdtest-ver1.0.25678888.rar</file> 
               <repositoryId>nexus-snapshots</repositoryId>
-              <groupId>NVMP</groupId>
+              <groupId>nvmp.3</groupId>
               <artifactId>up-fdsfsdfsdtest</artifactId>
               <version>ver1.0.25678888</version>
               <type>rar</type>
@@ -64,7 +64,7 @@
 </build>
 <dependencies>
 <dependency>
-  <groupId>NVMP</groupId>
+  <groupId>NVMP.2</groupId>
   <artifactId>up-fdsfsdfsdtest</artifactId>
   <version>ver1.0.25678888</version>
   <type>rar</type>

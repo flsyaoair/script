@@ -36,7 +36,7 @@
 </build>
 <dependencies>
 <dependency>
-  <groupId>NVMP</groupId>
+  <groupId>NVMP.2</groupId>
   <artifactId>up-fdsfsdfsdtest</artifactId>
   <version>ver1.0.25678888</version>
   <type>rar</type>
