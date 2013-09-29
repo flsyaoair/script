@@ -46,7 +46,7 @@ releaseFile=open('releases.txt','r')
 releaseContent=releaseFile.readlines()
 releaseFile.close()
 
-groupId=releaseContent[0].strip('\n')
+groupId=releaseContent[0].strip('\n') 
 pName=groupId.rsplit('.')
 #print groupId
 if pName[0]=='NVMP' or pName[0]=='PTSP'or pName[0]=='PTSP-64' or pName[0]=='skyFS'or pName[0]=='skyFS-64'or pName[0]=='PolicePlatform' or pName[0]=='GuoBiao':
@@ -143,11 +143,11 @@ if pName[0]=='NVMP' or pName[0]=='PTSP'or pName[0]=='PTSP-64' or pName[0]=='skyF
 #        os.system ('mvn dependency:copy-dependencies')
 #        os.system ('mvn -P %s' %(line))
         continue
-    upPomFile=open('autoUpReleases\pom.xml','w')
-    upPomFile.write(dependency)
-    upPomFile.close()
-    gitlog=os.system('git commit -am "%s"' %(releaseContent))
-    print gitlog
+#    upPomFile=open('autoUpReleases\pom.xml','w')
+#    upPomFile.write(dependency)
+#    upPomFile.close()
+#    gitlog=os.system('git commit -am "%s"' %(releaseContent))
+#    print gitlog
 #    os.system('git pull origin downRelease')
 #    os.system('git checkout --ours autoRelease/pom.xml')
 #    os.system('git commit -am "merge"' )
@@ -161,14 +161,18 @@ if pName[0]=='NVMP' or pName[0]=='PTSP'or pName[0]=='PTSP-64' or pName[0]=='skyF
         
      
   
-if pName[0]=='copy':
+if pName[0]=='releasecopy':
     groupId=releaseContent[1].strip('\n')
     upgroupId=releaseContent[2].strip('\n')
     print upgroupId
     for line in releaseContent[3:]:
         line=line.strip('\n')
         i='-ver'
+        point='.'
         version=line[(line.index(i)+1):-4]
+        releaseVersion=version.rsplit('.')
+        releaseVersion=releaseVersion[:-1]
+        releaseVersion='.'.join(releaseVersion)+'.release'
         artifactId=line[:line.index(i)]
         extension=line[-3:]
         content="""
@@ -251,19 +255,26 @@ if pName[0]=='copy':
         content=content.replace('%artifactId%',artifactId)
         content=content.replace('%version%',version)
         content=content.replace('%extension%',extension)
+#        versionFile=open('pom.xml','w')
+#        versionFile.write(content)
+        
+         
         versionFile=open('pom.xml','w')
-        versionFile.write(content)       
+        versionFile.write(content)
+        os.system ('mvn dependency:copy-dependencies')
+        content=content.replace(version,releaseVersion) 
         dependencyContent=content[content.index(y):content.index(x)]
+        print dependencyContent
         dependency=dependency[:(dependency.index(x))]+dependencyContent+dependency[(dependency.index(x)):]
         versionFile.close()
 #        os.system ('mvn dependency:copy-dependencies')
 #        os.system ('mvn -P %s' %(line))
         continue
-    upPomFile=open('autoUpReleases\pom.xml','w')
-    upPomFile.write(dependency)
-    upPomFile.close()
-    gitlog=os.system('git commit -am "%s"' %(releaseContent))
-    print gitlog
+#    upPomFile=open('autoUpReleases\pom.xml','w')
+#    upPomFile.write(dependency)
+#    upPomFile.close()
+#    gitlog=os.system('git commit -am "%s"' %(releaseContent))
+#    print gitlog
 else:
         print 'it is gameOver'
       
