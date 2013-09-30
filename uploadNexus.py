@@ -82,11 +82,16 @@ def configNexus():
         fileName=artifactId+'-'+version+'.'+extension
         WORKSPACE=WORKSPACE+'\dest' 
     elif groupId=='skyFS':
-        hudsonVersion=os.environ['hudsonVersion']
+        hudsonVersion=os.environ['version']
         branch=JOB_NAME_L[1]
         version=hudsonVersion
         version=version+'.'+BUILD_NUMBER
-        groupId=groupId+'.'+version.replace('.','_')  
+        if 64 in  JOB_NAME_L[len(JOB_NAME_L)-1]:
+            
+            groupId='skyFS-64'+'.'+version.replace('.','_')
+        
+        else:
+            groupId=groupId+'.'+version.replace('.','_')    
         artifactId=JOB_NAME_L[0]+'_'+JOB_NAME_L[1]+'_'+JOB_NAME_L[len(JOB_NAME_L)-1]
         extension='zip'
         fileName=JOB_NAME_L[0]+'.'+extension
@@ -124,7 +129,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 
 <profiles>
 <profile>
-<id>%artifactId%-%version%.%extension%</id>
+<id>%fileName%</id>
 <build>
   <defaultGoal>deploy:deploy-file</defaultGoal>
   <plugins>
