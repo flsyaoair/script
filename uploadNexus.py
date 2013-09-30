@@ -86,7 +86,7 @@ def configNexus():
         branch=JOB_NAME_L[1]
         version=hudsonVersion
         version=version+'.'+BUILD_NUMBER
-        if 64 in  JOB_NAME_L[len(JOB_NAME_L)-1]:
+        if '64' in  JOB_NAME_L[len(JOB_NAME_L)-1]:
             
             groupId='skyFS-64'+'.'+version.replace('.','_')
         
