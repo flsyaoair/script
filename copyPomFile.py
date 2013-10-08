@@ -5,16 +5,14 @@ Created on 2013-9-30
 '''
 import os
 import subprocess 
-pomPath=r'F:\package'
+pomPath=r'.\package1'
 dirname=os.listdir(pomPath)
 dirname1='/'.join(dirname)
-print dirname1
-pomPath=r'F:\package'
-goalPath='e:\\package'+'\\'
+goalPath='..\\package2'+'\\'
 pomPath2=pomPath+'\\'
 #localPath=os.getcwd()
 #print localPath
-#print dirname1
+print dirname1
 def diff():
     if os.path.isfile('pomfile.txt'):
         
