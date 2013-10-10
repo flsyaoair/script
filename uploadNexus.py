@@ -16,7 +16,7 @@ BUILD_NUMBER=os.environ['BUILD_NUMBER']
 #GIT_COMMIT=os.environ['GIT_COMMIT']
 moduleName1=['sc']
 moduleName2=['skyFS']
-moduleName3=[]
+moduleName3=['skyembedproxyserver','storageServer','streamingserver','PTZProxyServer','workstateServer']
 GroupIdNexus=['sc','scp']
 #WORKSPACE="fls"
 #hudsonVersion='ver1.7.1'
@@ -37,7 +37,7 @@ class hudsonBuild():
                     print 'ok2'
                     break
                 elif i in moduleName3:
-                    groupId='2'
+                    groupId='NVMP-c'
                     print 'ok3'
                     break
                 else:
@@ -95,7 +95,23 @@ def configNexus():
         artifactId=JOB_NAME_L[0]+'_'+JOB_NAME_L[1]+'_'+JOB_NAME_L[len(JOB_NAME_L)-1]
         extension='zip'
         fileName=JOB_NAME_L[0]+'.'+extension
-        WORKSPACE=WORKSPACE     
+        WORKSPACE=WORKSPACE
+    elif groupId=='NVMP-c':
+        JOB_NAME_L_1=JOB_NAME_L[0]
+        extension='zip'
+        if JOB_NAME_L_1 in moduleName3:
+            groupId='nvmp'
+            version=JOB_NAME_L[1]
+            groupId=groupId+'.'+version.replace('.','_')
+            artifactId=JOB_NAME_L[0]
+            fileName=JOB_NAME_L[0]+'.'+extension
+        else:
+            groupId='nvmp.'+JOB_NAME_L[0]
+        #        branch=JOB_NAME_L[2]
+            version=JOB_NAME_L[2]+'.'+BUILD_NUMBER
+            artifactId=JOB_NAME_L[0]+'_'+JOB_NAME_L[1]
+           
+            fileName=JOB_NAME_L[1]+'.'+extension         
     else:
         print 'not ok !!!!!!!!'
         extension='zip'
