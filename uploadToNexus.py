@@ -97,7 +97,11 @@ def configNexus():
         fileName=JOB_NAME_L[0]+'.'+extension
     elif groupId=='NVMP-c':
         JOB_NAME_L_1=JOB_NAME_L[0]
-        extension='zip'
+        if 'SvControlsSetup' in JOB_NAME_L:
+            extension='zip'
+        else:
+            extension='exe'
+        
         if JOB_NAME_L_1 in moduleName3:
             groupId='nvmp'
             version=JOB_NAME_L[1]
