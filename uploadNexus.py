@@ -16,7 +16,7 @@ BUILD_NUMBER=os.environ['BUILD_NUMBER']
 #GIT_COMMIT=os.environ['GIT_COMMIT']
 moduleName1=['sc']
 moduleName2=['skyFS']
-moduleName3=['skyembedproxyserver','storageServer','streamingserver','PTZProxyServer','workstateServer']
+moduleName3=['skyembedproxyserver','storageServer','streamingserver','PTZProxyServer','workstateServer','SvControlsSetup']
 GroupIdNexus=['sc','scp']
 #WORKSPACE="fls"
 #hudsonVersion='ver1.7.1'
@@ -95,7 +95,6 @@ def configNexus():
         artifactId=JOB_NAME_L[0]+'_'+JOB_NAME_L[1]+'_'+JOB_NAME_L[len(JOB_NAME_L)-1]
         extension='zip'
         fileName=JOB_NAME_L[0]+'.'+extension
-        WORKSPACE=WORKSPACE
     elif groupId=='NVMP-c':
         JOB_NAME_L_1=JOB_NAME_L[0]
         extension='zip'
