@@ -98,9 +98,9 @@ def configNexus():
     elif groupId=='NVMP-c':
         JOB_NAME_L_1=JOB_NAME_L[0]
         if 'SvControlsSetup' in JOB_NAME_L:
-            extension='zip'
-        else:
             extension='exe'
+        else:
+            extension='zip'
         
         if JOB_NAME_L_1 in moduleName3:
             groupId='nvmp'
@@ -205,9 +205,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     versionFile.write(content)       
     versionFile.close()
 #    filepack=artifactId+version+extension
-    subprocess.check_call('mvn -P %s' %(fileName))
+#    subprocess.check_call('mvn -P %s' %(fileName))
 #    os.system ('mvn dependency:copy-dependencies')
-#    os.system ('mvn -P %s' %(line))
+    os.system ('mvn -P %s' %(fileName))
 #upload=uploadNexus().upload(moduleName1,moduleName2,moduleName3)
 uploadNexus=configNexus()
 #print upload
