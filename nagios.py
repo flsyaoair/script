@@ -1,14 +1,13 @@
 import sys
-values=[1,2,3]
-def test():
-    for i in values:
-#        print i
-        if i==6:
-            print 'ok'
-#        else:
-#            sys.exit(1)
-    return sys.exit(1)
-run=test()
-print run
-            
-    
+def exitFunc(value):
+        '''Clear function'''
+        print value
+        sys.exit()
+
+#print "hello"
+
+try:
+        sys.exit(2)
+except SystemExit,value:
+        exitFunc(value)
+#print "Ok"
