@@ -6,38 +6,29 @@ class MyHTMLParser(HTMLParser):
     def __init__(self):   
         HTMLParser.__init__(self)   
         self.links = [] 
-#        self.keyValue ='' 
+        self.hudsonvalue = ""
     a_text = False
-    i_text = False 
+    l_text = False 
 
    
     def handle_starttag(self,tag,attr):  
         if tag == 'a': 
-            print attr
             for (i,j) in attr:
-                  if j=='tip':
-                      for (i,j) in attr:
-                          if i=='href':
-                              self.links.append(j)
-                               
-
-
-                              self.a_text = True  
-               
+                if "last" in j:
+                    self.a_text = True  
     def handle_endtag(self,tag):  
         if tag == 'a':  
             self.a_text = False
-                  
-              
+           
     def handle_data(self,data):
         if self.a_text: 
-            print data 
-
-                  
+#             print data
+            self.links.append(data)
+           
 def getPage():
     admin ='admin'
     password ='csst10'
-    url = 'http://admin:password@192.168.203.10:8081/hudson/view/NVMP_java_build/job/storageServer4_ver3.6_build/'
+    url = 'http://admin:password@192.168.203.10:8081/hudson/job/09003hzxcqGA_storageServer_ver3.0.1_build/'
     url=url.replace('admin', admin)
     url=url.replace('password', password)
     page = urllib.urlopen(url)
@@ -45,13 +36,36 @@ def getPage():
     hp = MyHTMLParser()   
     hp.feed(html)   
     hp.close()
-    i=hp.links[0]
-#    print i
-    i=i.split('/')
+    link=hp.links
+    for i in link:
+        
+        if 'Last build' in i:
+            
+            id=i[i.find('(#')+2:i.find(')')]
+        elif 'Last successful'  in i:
+             
+            id2=i[i.find('(#')+2:i.find(')')]
+            if id==id2:
+                print "successful"
+            else:
+                print "failed"
+    url=url+id+'/'
+    page = urllib.urlopen(url)
+    html = page.readlines()
+    for value in html:
+#         print value
+        if '<br />' in value:
+#             print value
+            versionNumber=value[:value.find('<br')]
+            versionNumber=versionNumber.strip()
+            print versionNumber
+        elif 'Revision' in value:
+            versionNumber=value[value.find('</b>:')+5:]
+            versionNumber=versionNumber.strip()
+            print versionNumber  
     
-    print i[len(i)-2:len(i)-1]
-#    help (type(i))
-#    url=
-    print(hp.links[0]) 
+#     print html
+
+    
 
 bulid= getPage()
